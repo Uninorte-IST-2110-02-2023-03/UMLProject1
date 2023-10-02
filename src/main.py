@@ -1,4 +1,5 @@
 from book import LibroImpreso, LibroDigital, Audiolibro
+from company import Editorial
 from person import Autor
 
 def main() -> None:
@@ -37,9 +38,12 @@ def main() -> None:
         duracion = 330
     )
 
+    editorial = Editorial('981-56487845-1', 'Editorial Nova', 'Calle 1 # 1 - 1')
+
     print(libro_1)
     print(libro_2)
     print(libro_3)
+    print(editorial)
 
 if __name__ == '__main__':
     main()
