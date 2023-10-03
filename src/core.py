@@ -1,4 +1,5 @@
-from typing import List
+from company import Editorial
+from typing import List, Optional
 
 class Megaferia:
 
@@ -13,10 +14,20 @@ class Megaferia:
         self.__stands.append(Stand(precio))
         return True
     
+    def add_editorial(self, editorial: "Editorial") -> bool:
+        self.__editoriales.append(editorial)
+        return True
+    
+    def get_stand(self, id_stand: int) -> Optional["Stand"]:
+        for stand in self.__stands:
+            if id_stand == stand.get_id():
+                return stand
+        return None
+    
 
 class Stand:
 
-    __ID = 0
+    __ID: int = 0
 
     def __init__(self, precio: float) -> None:
         self.__id = Stand.__ID
@@ -27,3 +38,13 @@ class Stand:
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self.__id}, {self.__precio})'
+    
+    def get_id(self) -> int:
+        return self.__id
+    
+    def add_editorial(self, editorial: "Editorial") -> bool:
+        self.__editoriales.append(editorial)
+        return True
+    
+    def get_editoriales(self) -> List["Editorial"]:
+        return self.__editoriales
